@@ -1,0 +1,71 @@
+<head>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript'>
+var draw = function() {
+	var canvas = document.getElementById('tutorial');
+	if(canvas.getContext) {
+		var ctx = canvas.getContext('2d');
+
+		// this will draw a red rect
+		// then a 50% opaque blue rect
+		// partially on top of it
+		ctx.fillStyle = "rgb(200,0,0)";
+		ctx.fillRect (10,10,55,50);
+
+		ctx.fillStyle = "rgba(0,0,200,0.5)";
+		ctx.fillRect (30,30,55,50);
+
+		// this will draw the three
+		// styles of rects:
+		// fillRect - fills with the set color
+		// clearRect - erases the area specified
+		// strokeRect - only draws the border
+		ctx.fillStyle = "rgb(0,0,0)";
+		ctx.fillRect (80,80,100,100);
+		ctx.clearRect (100,100,60,60);
+		ctx.strokeRect (105,105,50,50);
+
+		// This will draw a triangle
+		ctx.beginPath();
+		ctx.moveTo(10,100); // always move to after beginning to set the starting point
+		ctx.lineTo(35,125); // create a line from current point to new point
+		ctx.lineTo(35,75);
+		ctx.fill(); // create a line back to the starting point then fill the shape created
+		
+		ctx.strokeStyle = "rgb(200,0,0)";
+		ctx.beginPath();
+		ctx.moveTo(10,100);
+		ctx.lineTo(35,125);
+		ctx.lineTo(35,75);
+		ctx.closePath(); // creates a line back to the starting point
+		ctx.stroke(); // fills in the path created with the stroke color
+
+		// This will draw a smiley face
+		ctx.beginPath();
+		ctx.moveTo(325,125);
+		ctx.arc(275,125,50,0,Math.PI*2,true); // Outer Circle
+		ctx.moveTo(310,125);
+		ctx.arc(275,125,35,0,Math.PI,false); // Mouth (clockwise)
+		ctx.moveTo(265,115);
+		ctx.arc(260,115,5,0,Math.PI*2,true); // Left eye
+		ctx.moveTo(295,115);
+		ctx.arc(290,115,5,0,Math.PI*2,true); // Right eye
+		ctx.strokeStyle = "rgb(0,200,0)";
+		ctx.stroke();
+	}
+}
+
+window.onload = function() {
+	draw();
+}
+</script>
+</head>
+<body>
+<div id="content">
+<center><h1>Goomblah</h1></center>
+<div id="game">
+<canvas id="tutorial" width="640" height="480">
+</canvas>
+</div>
+</div>
+</body>

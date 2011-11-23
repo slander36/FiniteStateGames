@@ -1,0 +1,31 @@
+fsg.player = function() {
+	var player = new fsg.actor();
+	
+	player.initFollowUp = function() {
+		this.x = 64;
+		this.y = 64;
+		this.name = "Player 1";
+	};
+	
+	player.moveUp = function() {
+		if(this.scene.getBlockType(this.x,this.y-1) == 1)
+			this.y--;
+	};
+	
+	player.moveDown = function() {
+		if(this.scene.getBlockType(this.x,this.y+1) == 1)
+			this.y++;
+	};
+	
+	player.moveLeft = function() {
+		if(this.scene.getBlockType(this.x-1,this.y) == 1)
+			this.x--;
+	};
+	
+	player.moveRight = function() {
+		if(this.scene.getBlockType(this.x+1,this.y) == 1)
+			this.x++;
+	};
+	
+	return player;
+};
